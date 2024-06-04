@@ -2,6 +2,10 @@ import { ConvexError, v } from "convex/values";
 
 import { internalMutation, query } from "./_generated/server";
 
+
+
+
+
 export const getUserById = query({
   args: { clerkId: v.string() },
   handler: async (ctx, args) => {
@@ -17,6 +21,10 @@ export const getUserById = query({
     return user;
   },
 });
+
+
+
+
 
 // this query is used to get the top user by podcast count. first the podcast is sorted by views and then the user is sorted by total podcasts, so the user with the most podcasts will be at the top.
 export const getTopUserByPodcastCount = query({
@@ -48,6 +56,8 @@ export const getTopUserByPodcastCount = query({
   },
 });
 
+
+
 export const createUser = internalMutation({
   args: {
     clerkId: v.string(),
@@ -64,6 +74,9 @@ export const createUser = internalMutation({
     });
   },
 });
+
+
+
 
 export const updateUser = internalMutation({
   args: {
@@ -100,6 +113,7 @@ export const updateUser = internalMutation({
     );
   },
 });
+
 
 export const deleteUser = internalMutation({
   args: { clerkId: v.string() },
