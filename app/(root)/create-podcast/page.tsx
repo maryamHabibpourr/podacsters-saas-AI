@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import GeneratePodcast from "@/components/GeneratePodcast"
-// import GenerateThumbnail from "@/components/GenerateThumbnail"
+import GenerateThumbnail from "@/components/GenerateThumbnail"
 import { Loader } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
 import { useToast } from "@/components/ui/use-toast"
@@ -66,7 +66,7 @@ const CreatePodcast = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // const createPodcast = useMutation(api.podcasts.createPodcast)
+  const createPodcast = useMutation(api.podcasts.createPodcast)
 
   const { toast } = useToast()
   // 1. Define your form.
@@ -92,19 +92,19 @@ const CreatePodcast = () => {
 
 
 
-      // const podcast = await createPodcast({
-      //   podcastTitle: data.podcastTitle,
-      //   podcastDescription: data.podcastDescription,
-      //   audioUrl,
-      //   imageUrl,
-      //   voiceType,
-      //   imagePrompt,
-      //   voicePrompt,
-      //   views: 0,
-      //   audioDuration,
-      //   audioStorageId: audioStorageId!,
-      //   imageStorageId: imageStorageId!,
-      // })
+      const podcast = await createPodcast({
+        podcastTitle: data.podcastTitle,
+        podcastDescription: data.podcastDescription,
+        audioUrl,
+        imageUrl,
+        voiceType,
+        imagePrompt,
+        voicePrompt,
+        views: 0,
+        audioDuration,
+        audioStorageId: audioStorageId!,
+        imageStorageId: imageStorageId!,
+      })
       toast({ title: 'Podcast created' })
       setIsSubmitting(false);
       router.push('/')
@@ -192,13 +192,13 @@ const CreatePodcast = () => {
                 setAudioDuration={setAudioDuration}
               />
 
-              {/* <GenerateThumbnail 
+              <GenerateThumbnail 
                setImage={setImageUrl}
                setImageStorageId={setImageStorageId}
                image={imageUrl}
                imagePrompt={imagePrompt}
                setImagePrompt={setImagePrompt}
-              />  */}
+              /> 
 
               <div className="mt-10 w-full">
                 <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
