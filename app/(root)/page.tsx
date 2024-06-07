@@ -5,9 +5,10 @@ import { api } from "@/convex/_generated/api";
 import LoaderSpinner from '@/components/LoaderSpinner';
 
 
+
+
 const Home = () => {
   const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
-
   if(!trendingPodcasts) return <LoaderSpinner />
   
   return (
